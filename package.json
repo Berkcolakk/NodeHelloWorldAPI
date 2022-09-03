@@ -2,6 +2,7 @@
   "name": "todoapp",
   "version": "1.0.0",
   "main": "./src/server.js",
+  "type": "module",
   "scripts": {
     "start": "nodemon app.js"
   },

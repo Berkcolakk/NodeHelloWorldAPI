@@ -2,3 +2,10 @@
 20220902	01:02:15	10a502a9-b1be-4741-8a92-ff3860d2b7e5	GET	undefined	/favicon.ico
 20220902	01:02:40	a1489d17-b9cf-4cb2-88ac-d677eb8701ec	GET	undefined	/hello
 20220902	01:02:40	20869051-e3b7-4bcc-8414-59716c870ebb	GET	undefined	/favicon.ico
+20220903	18:25:53	ef4a9b30-800c-42bf-9505-94a3b418a2d7	GET	undefined	/hello
+20220903	18:25:53	182be595-90b2-4615-b887-c4074766d18f	GET	undefined	/favicon.ico
+20220903	18:25:59	2935e405-d665-4b37-b956-eed80ba5c365	GET	undefined	/Auth/Login
+20220903	18:25:59	d7c4bb87-256a-472f-9bfd-6f5248b0eb96	GET	undefined	/favicon.ico
+20220903	18:26:21	e6057dc1-23ef-49f5-822a-d76fbc7d334d	GET	undefined	/Auth/Login
+20220903	18:26:21	2d1923db-728c-4402-ad84-30ff070c9724	GET	undefined	/favicon.ico
+20220903	18:26:43	d241541f-836d-4ff0-bd1f-27eb99d22aa2	POST	undefined	/Auth/Login

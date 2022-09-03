@@ -1,8 +1,7 @@
-"use strict";
-const MongoClient = require("mongodb").MongoClient;
+import { MongoClient } from "mongodb";
 const DBName = "MyDB";
 const URL = "mongodb://localhost:27017";
-module.exports.InsertMany = (CollectionName,DataCollection) => {
+export const InsertMany = (CollectionName, DataCollection) => {
   MongoClient.connect(URL, (err, db) => {
     if (err) throw err;
     try {
@@ -34,7 +33,7 @@ module.exports.InsertMany = (CollectionName,DataCollection) => {
     }
   });
 };
-module.exports.Insert = (CollectionName,Data) => {
+export const Insert = (CollectionName, Data) => {
   MongoClient.connect(URL, (err, db) => {
     if (err) throw err;
     try {
@@ -51,7 +50,7 @@ module.exports.Insert = (CollectionName,Data) => {
     }
   });
 };
-module.exports.GetById = (CollectionName,FindObj) => {
+export const GetById = (CollectionName, FindObj) => {
   return new Promise((resolve, reject) => {
     MongoClient.connect(URL, (err, db) => {
       if (err) throw err;
@@ -62,7 +61,7 @@ module.exports.GetById = (CollectionName,FindObj) => {
     });
   });
 };
-module.exports.GetAll = (CollectionName) => {
+export const GetAll = (CollectionName) => {
   return new Promise((resolve, reject) => {
     MongoClient.connect(URL, (err, db) => {
       if (err) throw err;

@@ -1,9 +1,6 @@
-const { logEvents } = require('./LogEvent');
+import { LogEvents } from "./LogEvent";
 
-const errorHandler = (err, req, res, next) => {
-    logEvents(`${err.name}: ${err.message}`, 'errorLog.txt');
-    console.error(err.stack)
-    res.status(500).send(err.message);
-}
-
-module.exports = errorHandler;
+export const ErrorHandler = (err, req, res, next) => {
+  LogEvents(`${err.name}: ${err.message}`, "errorLog.txt");
+  res.status(500).send(err.message);
+};
