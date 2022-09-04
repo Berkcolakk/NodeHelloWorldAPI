@@ -1,7 +1,9 @@
-import { Application } from "../../server";
 import { UserLogin } from "../../TodoApp.Services/UserService";
-
-Application.post("/Auth/Login", (req, res) => {
+import express from "express";
+const Router = express.Router();
+//Auth Module.
+Router.post("/Login", (req, res) => {
+  console.log("test");
   const result = UserLogin(req.body);
   if (result) {
     res.json(result);
@@ -12,3 +14,5 @@ Application.post("/Auth/Login", (req, res) => {
   }
   res.json("/Auth/Login");
 });
+
+export default Router;

@@ -1,12 +1,13 @@
 import { ApolloServer, gql } from "apollo-server-express";
+import RouteArray from "./TodoApp.Utilities/Router";
 import express from "express";
-// import { Logger } from "./Middleware/LogEvent";
-// import ErrorHandler from "./Middleware/ErrorHandler";
-import path from "path"
-const __dirname = path.resolve();
+import { Logger } from "./Middleware/LogEvent";
+import ErrorHandler from "./Middleware/ErrorHandler";
+import path from "path";
 import cors from "cors";
 const PORT = process.env.PORT || 3500;
-const HOST_NAME = process.env.HOST_NAME || "localhost";
+const app = express();
+const __dirname = path.resolve();
 const typeDefs = gql`
   type Query {
     hello: String!
@@ -33,13 +34,7 @@ const resolvers = {
     },
   },
 };
-const startServer = async () => {
-  const app = express();
-  // app.use(Logger);
-  const server = new ApolloServer({
-    typeDefs,
-    resolvers,
-  });
+const AddCors = () => {
   const whitelist = [
     "https://www.yoursite.com",
     "http://127.0.0.1:5500",
@@ -58,6 +53,9 @@ const startServer = async () => {
   };
   //Cors option
   app.use(cors(corsOptions));
+};
+const AddExpressConfig = () => {
+  app.use(Logger);
   app.use(express.urlencoded({ extended: false }));
 
   // built-in middleware for json
@@ -66,12 +64,30 @@ const startServer = async () => {
   //serve static files
   app.use(express.static(path.join(__dirname, "/public")));
   // app.use(ErrorHandler);
+  app.use(ErrorHandler);
+  RouteConfig();
+};
+const startServer = async () => {
+  const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+  });
+  //Add CORS.
+  AddCors();
+  //Add Express Config.
+  AddExpressConfig();
   await server.start();
   server.applyMiddleware({ app });
-
   app.listen({ port: PORT }, () =>
-    console.log(`🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`)
+    console.log(
+      `🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`
+    )
   );
+};
+const RouteConfig = () => {
+  for(const Route of RouteArray) {
+    app.use(`/${Route.Name}`, Route.Template);
+  }
 };
 
 startServer();
